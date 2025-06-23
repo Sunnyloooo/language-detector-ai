@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Language Detector</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🌍 AI Language Detector</h1>
+        <p>Identify languages in text with AI-powered detection</p>
+      </div>
+
+      <div class="main-content">
+        <div class="api-config">
+          <h3>⚙️ API Configuration</h3>
+          <div class="input-group">
+            <label for="apiKey">OpenAI API Key:</label>
+            <input
+              type="password"
+              id="apiKey"
+              placeholder="Enter your OpenAI API Key"
+            />
+          </div>
+          <div class="input-group">
+            <label for="detectionMode">Detection Mode:</label>
+            <select id="detectionMode">
+              <option value="simple">
+                Simple Detection (Top language only)
+              </option>
+              <option value="detailed">
+                Detailed Analysis (Multiple languages)
+              </option>
+              <option value="comprehensive">
+                Comprehensive (With text analysis)
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="inputText">📝 Enter text to detect language:</label>
+          <textarea
+            id="inputText"
+            placeholder="Type or paste text in any language here..."
+          ></textarea>
+        </div>
+
+        <div class="sample-texts">
+          <h4>📚 Try Sample Texts:</h4>
+          <button class="sample-btn" onclick="setSampleText('english')">
+            🇺🇸 English
+          </button>
+          <button class="sample-btn" onclick="setSampleText('spanish')">
+            🇪🇸 Spanish
+          </button>
+          <button class="sample-btn" onclick="setSampleText('french')">
+            🇫🇷 French
+          </button>
+          <button class="sample-btn" onclick="setSampleText('chinese')">
+            🇹🇼 Chinese
+          </button>
+          <button class="sample-btn" onclick="setSampleText('japanese')">
+            🇯🇵 Japanese
+          </button>
+          <button class="sample-btn" onclick="setSampleText('mixed')">
+            🌐 Mixed
+          </button>
+        </div>
+
+        <button class="detect-btn" onclick="detectLanguage()">
+          🔍 Detect Language
+        </button>
+
+        <div id="loadingDiv" class="loading">
+          <div class="spinner"></div>
+          <p>AI is analyzing the language...</p>
+        </div>
+
+        <div id="resultsContainer" class="results-container">
+          <div class="primary-result">
+            <div id="languageFlag" class="language-flag">🌍</div>
+            <div id="languageName" class="language-name">Unknown</div>
+            <div id="languageCode" class="language-code">--</div>
+            <div id="confidenceScore" class="confidence-score">
+              Confidence: 0%
+            </div>
+            <div class="confidence-bar">
+              <div
+                id="confidenceFill"
+                class="confidence-fill"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="detection-details">
+            <div class="details-card">
+              <h4>🏆 Language Rankings</h4>
+              <div id="languageList" class="language-list">
+                <!-- Language list will be populated here -->
+              </div>
+            </div>
+
+            <div class="details-card">
+              <h4>📊 Text Analysis</h4>
+              <div id="textAnalysis" class="text-analysis">
+                <!-- Analysis will be populated here -->
+              </div>
+              <div class="text-stats">
+                <div class="stat-item">
+                  <div id="wordCount" class="stat-value">0</div>
+                  <div class="stat-label">Words</div>
+                </div>
+                <div class="stat-item">
+                  <div id="charCount" class="stat-value">0</div>
+                  <div class="stat-label">Characters</div>
+                </div>
+                <div class="stat-item">
+                  <div id="langCount" class="stat-value">0</div>
+                  <div class="stat-label">Languages</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="errorDiv" class="error"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
